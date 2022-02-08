@@ -7,3 +7,14 @@
 - name: Display result
   debug:
     msg: "Version {{version}} "
+
+- name: Gather only the interfaces resource facts and no legacy facts
+  arista.eos.eos_facts:
+    gather_subset:
+    - '!all'
+    - '!min'
+    gather_network_resources:
+    - interfaces
+- name: debug
+  debug:
+    msg: "{{ ansible_net_interfaces }}"
