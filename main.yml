@@ -6,5 +6,7 @@
     - apache
     - { role: geerlingguy.firewall }
 - hosts: local
+  tags:
+    - docker
   roles:
     - container
