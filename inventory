@@ -56,3 +56,7 @@ debian-4
 [web_debian]
 debian-0
 debian-1
+
+[web_rocky]
+rocky-0
+rocky-1

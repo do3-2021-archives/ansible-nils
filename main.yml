@@ -26,12 +26,12 @@
   tasks:
     - name: Installer Apache
       ansible.builtin.apt:
-        name: apache2
+        name: httpd
         state: present
         update_cache: true
     - name: Installer Php7
-      ansible.builtin.apt:
-        name: libapache2-mod-php7.4
+      ansible.builtin.dnf:
+        name: php-7.4
         state: present
     - name: Démarrer le service Apache
       ansible.builtin.service:
