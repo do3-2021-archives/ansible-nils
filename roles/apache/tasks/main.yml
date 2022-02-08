@@ -32,10 +32,10 @@
   ansible.builtin.template:
     src: ./ports.conf.j2
     dest: /etc/apache2/ports.conf
-    owner: apache
+    owner: www-data
     mode: "0644"
   notify:
-    - Restart apache
+    - Restart apache2
   when: ansible_facts["os_family"] == "Debian"
 
 - name: Reload apache config
@@ -72,16 +72,6 @@
     owner: apache
     group: apache
     mode: 0664
-  when: ansible_facts["os_family"] == "RedHat"
-
-- name: Install config file
-  ansible.builtin.template:
-    src: ./ports.conf.j2
-    dest: /etc/apache2/ports.conf
-    owner: apache
-    mode: "0644"
-  notify:
-    - Restart apache
   when: ansible_facts["os_family"] == "RedHat"
 
 - name: Reload apache config

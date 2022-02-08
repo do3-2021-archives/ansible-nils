@@ -1,9 +1,11 @@
 ---
-- name: Restart apache
+- name: Restart apache2
   ansible.builtin.shell:
     cmd: "killall -s SIGHUP apache2"
   when: ansible_facts["os_family"] == "Debian"
-- name: Restart apache
+  ignore_errors: true
+- name: Restart httpd
   ansible.builtin.shell:
     cmd: "killall -s SIGHUP httpd"
   when: ansible_facts["os_family"] == "RedHat"
+  ignore_errors: true
