@@ -25,7 +25,7 @@
 - hosts: web_rocky
   tasks:
     - name: Installer Apache
-      ansible.builtin.apt:
+      ansible.builtin.dnf:
         name: httpd
         state: present
         update_cache: true
