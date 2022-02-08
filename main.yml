@@ -1,7 +1,13 @@
 ---
 - hosts: web_debian
+  vars_files:
+    - vars/main.yml
   roles:
     - apache
-- hosts: web_rocky
+    - geerlingguy.firewall
+- hosts: web_rocky  
+  vars_files:
+    - vars/main.yml
   roles :
     - apache
+    - geerlingguy.firewall
