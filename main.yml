@@ -22,9 +22,21 @@
         owner: www-data
         group: www-data
         mode: 0664
+    - name: Install config file
+      ansible.builtin.template:
+        src: ./ports.conf.j2
+        dest: /etc/apache2/ports.conf
+        owner: apache
+        mode: "0644"
+      notify: 
+        - Restart apache
     - name: Reload apache config
       tags:
         - reload
+      ansible.builtin.shell:
+        cmd: "killall -s SIGHUP apache2"
+  handlers:
+    - name: Restart apache
       ansible.builtin.shell:
         cmd: "killall -s SIGHUP apache2"
 - hosts: web_rocky
@@ -50,8 +62,21 @@
         owner: apache
         group: apache
         mode: 0664
+
+    - name: Install config file
+      ansible.builtin.template:
+        src: ./ports.conf.j2
+        dest: /etc/apache2/ports.conf
+        owner: apache
+        mode: "0644"
+      notify: 
+        - Restart apache
     - name: Reload apache config
       tags:
         - reload
+      ansible.builtin.shell:
+        cmd: "killall -s SIGHUP httpd"
+  handlers:
+    - name: Restart apache
       ansible.builtin.shell:
         cmd: "killall -s SIGHUP httpd"
