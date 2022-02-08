@@ -1,3 +1,13 @@
 ---
 - name: ping
   ansible.windows.win_ping:
+
+- name: Create temp folder
+  ansible.windows.win_file:
+    path: C:\Temp
+    state: directory
+- name: install the Win32-OpenSSH service
+  win_chocolatey:
+    name: openssh
+    package_params: /SSHServerFeature
+    state: present
