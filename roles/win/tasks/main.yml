@@ -37,3 +37,9 @@
       - /desktopicon=yes
       - /quicklaunchicon=yes
     state: present
+
+
+- name: install libreoffice
+  win_chocolatey:
+    name: libreoffice
+    state: present
