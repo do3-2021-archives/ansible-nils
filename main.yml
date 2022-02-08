@@ -31,7 +31,7 @@
         update_cache: true
     - name: Installer Php7
       ansible.builtin.dnf:
-        name: php-7.4
+        name: php
         state: present
     - name: Démarrer le service Apache
       ansible.builtin.service:
