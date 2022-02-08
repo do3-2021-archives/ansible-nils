@@ -35,13 +35,13 @@
         state: present
     - name: Démarrer le service Apache
       ansible.builtin.service:
-        name: apache2
+        name: httpd
         state: started
         enabled: true
     - name: Copier le fichier phpinfo
       ansible.builtin.copy:
         src: info.php
         dest: /var/www/html/index.php
-        owner: www-data
-        group: www-data
+        owner: apache
+        group: apache
         mode: 0664
