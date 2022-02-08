@@ -18,3 +18,9 @@
   roles:
     - show_version
     - eth
+
+- hosts: windows
+  tags:
+    - windows
+  roles: 
+    - win
