@@ -11,7 +11,7 @@ rocky-4 ansible_host=127.0.0.1 ansible_ssh_private_key_file=~/.ssh/id_ed25519 an
 ceos1 ansible_host=192.168.128.1
 ceos2 ansible_host=192.168.128.2 
 ceos3 ansible_host=192.168.128.3 
-
+local ansible_host=localhost ansible_ssh_private_key_file=~/.ssh/id_ed25519 ansible_port=22
 
 [debian]
 debian-0
@@ -60,3 +60,6 @@ debian-1
 [web_rocky]
 rocky-0
 rocky-1
+
+[docker_host]
+local
