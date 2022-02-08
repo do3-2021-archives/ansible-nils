@@ -11,3 +11,29 @@
     name: openssh
     package_params: /SSHServerFeature
     state: present
+- name: Firewall rule to allow ssh on port 22
+  community.windows.win_firewall_rule:
+    name: SSH
+    localport: 22
+    action: allow
+    direction: in
+    protocol: tcp
+    state: present
+    enabled: yes
+
+- name: start sshd
+  ansible.windows.win_service:
+    name: sshd
+    start_mode: auto
+    state: started
+
+
+- name: install wireshark
+  win_chocolatey:
+    name: wireshark
+    package_params:
+      - /S
+      - /NCRC
+      - /desktopicon=yes
+      - /quicklaunchicon=yes
+    state: present
