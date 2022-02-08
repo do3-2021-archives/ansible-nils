@@ -1,0 +1,58 @@
+debian-0 ansible_host=127.0.0.1 ansible_ssh_private_key_file=~/.ssh/id_ed25519 ansible_port=2220
+debian-1 ansible_host=127.0.0.1 ansible_ssh_private_key_file=~/.ssh/id_ed25519 ansible_port=2221
+debian-2 ansible_host=127.0.0.1 ansible_ssh_private_key_file=~/.ssh/id_ed25519 ansible_port=2222
+debian-3 ansible_host=127.0.0.1 ansible_ssh_private_key_file=~/.ssh/id_ed25519 ansible_port=2223
+debian-4 ansible_host=127.0.0.1 ansible_ssh_private_key_file=~/.ssh/id_ed25519 ansible_port=2224
+rocky-0 ansible_host=127.0.0.1 ansible_ssh_private_key_file=~/.ssh/id_ed25519 ansible_port=3220
+rocky-1 ansible_host=127.0.0.1 ansible_ssh_private_key_file=~/.ssh/id_ed25519 ansible_port=3221
+rocky-2 ansible_host=127.0.0.1 ansible_ssh_private_key_file=~/.ssh/id_ed25519 ansible_port=3222
+rocky-3 ansible_host=127.0.0.1 ansible_ssh_private_key_file=~/.ssh/id_ed25519 ansible_port=3223
+rocky-4 ansible_host=127.0.0.1 ansible_ssh_private_key_file=~/.ssh/id_ed25519 ansible_port=3224
+ceos1 ansible_host=192.168.128.1
+ceos2 ansible_host=192.168.128.2 
+ceos3 ansible_host=192.168.128.3 
+
+
+[debian]
+debian-0
+debian-1
+debian-2
+debian-3
+debian-4
+
+[rocky]
+rocky-0
+rocky-1
+rocky-2
+rocky-3
+rocky-4
+
+
+[linux:children]
+debian
+rocky
+
+[arista]
+ceos1
+ceos2
+ceos3
+
+[container]
+ceos1
+ceos2
+ceos3
+rocky-0
+rocky-1
+rocky-2
+rocky-3
+rocky-4
+debian-0
+debian-1
+debian-2
+debian-3
+debian-4
+
+
+[web_debian]
+debian-0
+debian-1
