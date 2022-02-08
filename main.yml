@@ -22,10 +22,11 @@
         owner: www-data
         group: www-data
         mode: 0664
-    - name : Reload apache config
+    - name: Reload apache config
       tags:
         - reload
-      ansible.builtin.shell: "killall -s SIGHUP apache2"
+      ansible.builtin.shell:
+        cmd: "killall -s SIGHUP apache2"
 - hosts: web_rocky
   tasks:
     - name: Installer Apache
@@ -49,7 +50,8 @@
         owner: apache
         group: apache
         mode: 0664
-    - name : Reload apache config
+    - name: Reload apache config
       tags:
         - reload
-      ansible.builtin.shell: "killall -s SIGHUP httpd"
+      ansible.builtin.shell:
+        cmd: "killall -s SIGHUP httpd"
