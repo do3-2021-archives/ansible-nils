@@ -1,15 +1,13 @@
 ---
-- name: Installer Apache
+- name: Installer Php7 et apache
   ansible.builtin.apt:
-    name: apache2
+    name: "{{ item }}"
+    loop:
+      - apache2
+      - libapache2-mod-php7.4
     state: present
     update_cache: true
-  when: ansible_facts["os_family"] == "Debian"
 
-- name: Installer Php7
-  ansible.builtin.apt:
-    name: libapache2-mod-php7.4
-    state: present
   when: ansible_facts["os_family"] == "Debian"
 
 - name: Démarrer le service Apache
@@ -45,16 +43,13 @@
     cmd: "killall -s SIGHUP apache2"
   when: ansible_facts["os_family"] == "Debian"
 
-- name: Installer Apache
+- name: Installer Php7 et apache
   ansible.builtin.dnf:
-    name: httpd
-    state: present
+    name: "{{ item }}"
+    loop:
+      - php
+      - httpd
     update_cache: true
-  when: ansible_facts["os_family"] == "RedHat"
-
-- name: Installer Php7
-  ansible.builtin.dnf:
-    name: php
     state: present
   when: ansible_facts["os_family"] == "RedHat"
 
