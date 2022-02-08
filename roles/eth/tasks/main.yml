@@ -1,0 +1,4 @@
+---
+- name: apply config
+  eos_config:
+    src: ./arista.cfg.j2
