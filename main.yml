@@ -10,3 +10,10 @@
     - docker
   roles:
     - container
+- hosts: arista
+  # connection: network_cli
+  # gather_facts: false
+  tags:
+    - arista
+  roles:
+    - show_version

@@ -1,0 +1,9 @@
+---
+- name: collect data
+  eos_command:
+    commands:
+      - show version
+  register: version
+- name: Display result
+  debug:
+    msg: "Version {{version}} "
